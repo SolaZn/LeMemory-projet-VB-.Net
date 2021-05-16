@@ -1,0 +1,13 @@
+D:\DUT_IFO1\cours-s2\IHM VB\projet\LeMemory - projet VB .Net\bin\Debug\LeMemory___projet_VB.Net.exe.config
+D:\DUT_IFO1\cours-s2\IHM VB\projet\LeMemory - projet VB .Net\bin\Debug\LeMemory___projet_VB.Net.exe
+D:\DUT_IFO1\cours-s2\IHM VB\projet\LeMemory - projet VB .Net\bin\Debug\LeMemory___projet_VB.Net.pdb
+D:\DUT_IFO1\cours-s2\IHM VB\projet\LeMemory - projet VB .Net\bin\Debug\LeMemory___projet_VB.Net.xml
+D:\DUT_IFO1\cours-s2\IHM VB\projet\LeMemory - projet VB .Net\obj\Debug\LeMemory - projet VB .Net.vbprojAssemblyReference.cache
+D:\DUT_IFO1\cours-s2\IHM VB\projet\LeMemory - projet VB .Net\obj\Debug\LeMemory___projet_VB.Net.Resources.resources
+D:\DUT_IFO1\cours-s2\IHM VB\projet\LeMemory - projet VB .Net\obj\Debug\LeMemory - projet VB .Net.vbproj.GenerateResource.cache
+D:\DUT_IFO1\cours-s2\IHM VB\projet\LeMemory - projet VB .Net\obj\Debug\LeMemory - projet VB .Net.vbproj.CoreCompileInputs.cache
+D:\DUT_IFO1\cours-s2\IHM VB\projet\LeMemory - projet VB .Net\obj\Debug\LeMemory___projet_VB.Net.exe
+D:\DUT_IFO1\cours-s2\IHM VB\projet\LeMemory - projet VB .Net\obj\Debug\LeMemory___projet_VB.Net.xml
+D:\DUT_IFO1\cours-s2\IHM VB\projet\LeMemory - projet VB .Net\obj\Debug\LeMemory___projet_VB.Net.pdb
+D:\DUT_IFO1\cours-s2\IHM VB\projet\LeMemory - projet VB .Net\obj\Debug\LeMemory___projet_VB.Net.Partie.resources
+D:\DUT_IFO1\cours-s2\IHM VB\projet\LeMemory - projet VB .Net\obj\Debug\LeMemory___projet_VB.Net.Accueil.resources
