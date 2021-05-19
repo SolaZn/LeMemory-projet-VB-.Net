@@ -2,6 +2,7 @@
     'Initialisation du jeu
     Private tableauCartesCachees As New List(Of Integer)
     Private numeroCartePrecedente As Integer = -1
+    Private tabIndexPrecedent As Integer = -1
     Private listeCartesPrecedentes As New List(Of Integer)
     Private carresCompletes As Integer = 0
     Private Compteur As Integer = 59
@@ -52,8 +53,11 @@
             End If
         End If
 
+        If Not sender.TabIndex = tabIndexPrecedent Then
+            listeCartesPrecedentes.Add(sender.Text)
+        End If
         numeroCartePrecedente = sender.Text
-        listeCartesPrecedentes.Add(sender.Text)
+        tabIndexPrecedent = sender.TabIndex
 
         TimerIdle.Interval = 1
         TimerIdle.Start()
@@ -87,7 +91,6 @@
 
     Private Sub afficherCarte(numeroCarte As Integer)
         If numeroCartePrecedente = -1 Then
-            TimerJeu.Start()
             TimerJeu_Refresh.Start()
         End If
 
@@ -116,7 +119,6 @@
         NomJ.Text = ModuleJoueurs.NomJoueur
         Me.Text = "Partie de " & NomJ.Text
         TimerErreur.Interval() = 1
-        TimerJeu.Interval() = 60000
         TimerJeu_Refresh.Interval() = 1000
     End Sub
 
@@ -133,19 +135,15 @@
     End Sub
 
     Private Sub TerminerJeu()
+        TimerJeu_Refresh.Stop()
         MsgBox("Le jeu est fini ! Bien joué !" + vbNewLine + "Vous avez complété " & carresCompletes & " carrés !", MsgBoxStyle.OkOnly, "Résultats")
-        Me.Close()
         Accueil.Show()
+        Close()
     End Sub
 
     Private Sub TimerIdle_Tick(sender As Object, e As EventArgs) Handles TimerIdle.Tick
-        Threading.Thread.Sleep(300)
+        Threading.Thread.Sleep(500)
         TimerIdle.Stop()
-    End Sub
-
-    Private Sub TimerJeu_Tick(sender As Object, e As EventArgs) Handles TimerJeu.Tick
-        TerminerJeu()
-        TimerJeu.Stop()
     End Sub
 
     Private Sub TimerJeu_Refresh_Tick(sender As Object, e As EventArgs) Handles TimerJeu_Refresh.Tick
@@ -155,14 +153,20 @@
         Else
             TimerJeu_Aff.Text = "0:0" & Compteur
         End If
-
+        If Compteur < 0 Then
+            TerminerJeu()
+        End If
     End Sub
 
     Private Sub Btn_Abandon_Click(sender As Object, e As EventArgs) Handles Btn_Abandon.Click
+        TimerJeu_Refresh().Stop()
+        cacherCartes()
         Dim Abandon As Integer = MsgBox("Voulez-vous abandonner la partie ?", MsgBoxStyle.OkCancel, "Abandon")
         If Abandon = 1 Then
             Accueil.Show()
             Me.Close()
         End If
+        TimerJeu_Refresh.Start()
     End Sub
+
 End Class
