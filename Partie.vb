@@ -6,6 +6,8 @@
     Private listeCartesPrecedentes As New List(Of Integer)
     Private carresCompletes As Integer = 0
     Private Compteur As Integer = 59
+    Dim Chrono_Carres As Stopwatch = New Stopwatch
+
 
     Private Sub chargerImages()
         Randomize()
@@ -42,7 +44,12 @@
     End Sub
 
     Private Sub revelerCarte(sender As Object, e As EventArgs)
+        Chrono_Carres.Stop()
         afficherCarte(sender.Text)
+
+        If sender.TabIndex = tabIndexPrecedent Then
+            Exit Sub
+        End If
 
         If Not numeroCartePrecedente = -1 Then
             If Not tableauCartesCachees(numeroCartePrecedente - 1) = tableauCartesCachees(sender.Text - 1) Then
@@ -67,15 +74,18 @@
             listeCartesPrecedentes.Clear()
             numeroCartePrecedente = -1
         End If
+        Chrono_Carres.Start()
     End Sub
 
     Private Sub carreComplet()
         'il faudra gérer la désactivation des champs et l'enregistrement des 4 premiers carrés joués (possible de compter aussi le temps pris avec un timer
         'pour compléter le carré
+        TempsMinPrCarré = Int(Chrono_Carres.Elapsed.TotalSeconds)
         enregistrerCarre()
 
         If carresCompletes = 5 Then
             TerminerJeu()
+            NombreMaxCarré = 5
         End If
     End Sub
 
@@ -92,6 +102,7 @@
     Private Sub afficherCarte(numeroCarte As Integer)
         If numeroCartePrecedente = -1 Then
             TimerJeu_Refresh.Start()
+            Chrono_Carres.Start()
         End If
 
         Dim nomLabelString = "Label" & numeroCarte
@@ -130,13 +141,16 @@
             End If
         Next
 
-        listeCartesPrecedentes.Clear()
         TimerErreur.Stop()
     End Sub
 
     Private Sub TerminerJeu()
+        Chrono_Carres.Stop()
         TimerJeu_Refresh.Stop()
-        MsgBox("Le jeu est fini ! Bien joué !" + vbNewLine + "Vous avez complété " & carresCompletes & " carrés !", MsgBoxStyle.OkOnly, "Résultats")
+        MsgBox("Le jeu est fini ! Bien joué !" + vbNewLine + "Vous avez complété " & carresCompletes & " carrés en " & TempsMinPrCarré & " secondes !", MsgBoxStyle.OkOnly, "Résultats")
+        NombreMaxCarré = carresCompletes
+        TempsJeuTotal = 60 - Compteur
+        JoueurJouant.SetValeurs(TempsJeuTotal, TempsMinPrCarré, NombreMaxCarré)
         Accueil.Show()
         Close()
     End Sub
@@ -153,7 +167,7 @@
         Else
             TimerJeu_Aff.Text = "0:0" & Compteur
         End If
-        If Compteur < 0 Then
+        If Compteur = 0 Then
             TerminerJeu()
         End If
     End Sub
@@ -168,5 +182,9 @@
         End If
         TimerJeu_Refresh.Start()
     End Sub
+
+    Private NombreMaxCarré As Integer
+    Private TempsMinPrCarré As Integer
+    Private TempsJeuTotal As Integer
 
 End Class

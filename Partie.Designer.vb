@@ -23,6 +23,7 @@ Partial Class Partie
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Partie))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.FLPanel_Cartes = New System.Windows.Forms.FlowLayoutPanel()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -53,7 +54,9 @@ Partial Class Partie
         Me.L_NomJoueur = New System.Windows.Forms.Label()
         Me.NomJ = New System.Windows.Forms.Label()
         Me.Btn_Abandon = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.FLPanel_Cartes.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -89,7 +92,7 @@ Partial Class Partie
         Me.FLPanel_Cartes.Controls.Add(Me.Label18)
         Me.FLPanel_Cartes.Controls.Add(Me.Label19)
         Me.FLPanel_Cartes.Controls.Add(Me.Label20)
-        Me.FLPanel_Cartes.Location = New System.Drawing.Point(28, 99)
+        Me.FLPanel_Cartes.Location = New System.Drawing.Point(27, 108)
         Me.FLPanel_Cartes.Name = "FLPanel_Cartes"
         Me.FLPanel_Cartes.Size = New System.Drawing.Size(546, 536)
         Me.FLPanel_Cartes.TabIndex = 1
@@ -271,13 +274,10 @@ Partial Class Partie
         'TimerIdle
         '
         '
-        'TimerJeu
-        '
-        '
         'L_TimerJeu_Aff
         '
         Me.L_TimerJeu_Aff.AutoSize = True
-        Me.L_TimerJeu_Aff.Location = New System.Drawing.Point(265, 39)
+        Me.L_TimerJeu_Aff.Location = New System.Drawing.Point(357, 40)
         Me.L_TimerJeu_Aff.Name = "L_TimerJeu_Aff"
         Me.L_TimerJeu_Aff.Size = New System.Drawing.Size(80, 13)
         Me.L_TimerJeu_Aff.TabIndex = 2
@@ -287,7 +287,7 @@ Partial Class Partie
         '
         Me.TimerJeu_Aff.AutoSize = True
         Me.TimerJeu_Aff.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TimerJeu_Aff.Location = New System.Drawing.Point(280, 52)
+        Me.TimerJeu_Aff.Location = New System.Drawing.Point(372, 53)
         Me.TimerJeu_Aff.Name = "TimerJeu_Aff"
         Me.TimerJeu_Aff.Size = New System.Drawing.Size(45, 24)
         Me.TimerJeu_Aff.TabIndex = 3
@@ -299,7 +299,7 @@ Partial Class Partie
         'L_NomJoueur
         '
         Me.L_NomJoueur.AutoSize = True
-        Me.L_NomJoueur.Location = New System.Drawing.Point(99, 52)
+        Me.L_NomJoueur.Location = New System.Drawing.Point(261, 65)
         Me.L_NomJoueur.Name = "L_NomJoueur"
         Me.L_NomJoueur.Size = New System.Drawing.Size(35, 13)
         Me.L_NomJoueur.TabIndex = 4
@@ -308,7 +308,8 @@ Partial Class Partie
         'NomJ
         '
         Me.NomJ.AutoSize = True
-        Me.NomJ.Location = New System.Drawing.Point(140, 52)
+        Me.NomJ.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NomJ.Location = New System.Drawing.Point(302, 65)
         Me.NomJ.Name = "NomJ"
         Me.NomJ.Size = New System.Drawing.Size(16, 13)
         Me.NomJ.TabIndex = 5
@@ -316,28 +317,43 @@ Partial Class Partie
         '
         'Btn_Abandon
         '
-        Me.Btn_Abandon.Location = New System.Drawing.Point(455, 47)
+        Me.Btn_Abandon.Location = New System.Drawing.Point(469, 55)
         Me.Btn_Abandon.Name = "Btn_Abandon"
         Me.Btn_Abandon.Size = New System.Drawing.Size(75, 23)
         Me.Btn_Abandon.TabIndex = 6
         Me.Btn_Abandon.Text = "Abandonner"
         Me.Btn_Abandon.UseVisualStyleBackColor = True
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.SystemColors.Control
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PictureBox1.Image = Global.LeMemory___projet_VB.Net.My.Resources.Resources.memory
+        Me.PictureBox1.Location = New System.Drawing.Point(33, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(180, 90)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 13
+        Me.PictureBox1.TabStop = False
+        '
         'Partie
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(601, 647)
+        Me.ClientSize = New System.Drawing.Size(587, 653)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Btn_Abandon)
         Me.Controls.Add(Me.NomJ)
         Me.Controls.Add(Me.L_NomJoueur)
         Me.Controls.Add(Me.TimerJeu_Aff)
         Me.Controls.Add(Me.L_TimerJeu_Aff)
         Me.Controls.Add(Me.FLPanel_Cartes)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Partie"
         Me.Text = "LeMemory - PARTIE"
         Me.TopMost = True
         Me.FLPanel_Cartes.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -372,4 +388,5 @@ Partial Class Partie
     Friend WithEvents L_NomJoueur As Label
     Friend WithEvents NomJ As Label
     Friend WithEvents Btn_Abandon As Button
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

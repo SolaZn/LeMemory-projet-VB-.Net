@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("LeMemory - projet VB .Net")>
-<Assembly: AssemblyCopyright("Copyright ©  2021")>
+<Assembly: AssemblyCopyright("Copyright ©  2021 Anthony Zakani")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

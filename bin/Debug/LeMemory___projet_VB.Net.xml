@@ -52,5 +52,10 @@ LeMemory___projet_VB.Net
   Recherche une ressource localisée de type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:LeMemory___projet_VB.Net.My.Resources.Resources.memory">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
 </members>
 </doc>

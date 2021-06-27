@@ -1,39 +1,37 @@
 ﻿Imports System.IO
 
 Module ModuleJoueurs
-    Public listeJoueurs As New List(Of String)
+    Public JeuLance As Boolean = False
+    Public listeJoueurs As New List(Of Joueur)
     Dim path As String = My.Application.Info.DirectoryPath
     Dim statsJoueurs As String = IO.Path.Combine(path, "statsJoueurs.txt")
+
+    Public NomJoueur As String
+    Public JoueurJouant As Joueur
+
     Public Function getNomsJoueurs()
-
-        Dim path As String = My.Application.Info.DirectoryPath
-        Dim statsJoueurs As String = IO.Path.Combine(path, "statsJoueurs.txt")
-
-        Dim SR_Joueurs As New StreamReader(statsJoueurs)
-        Do While SR_Joueurs.Peek() >= 0
-            RecupererNoms(SR_Joueurs.ReadLine)
-        Loop
-        SR_Joueurs.Close()
-
-        Return listeJoueurs
+        Return Joueur.RecupererNomsJoueurs()
     End Function
 
     Public Sub EnregistrerJoueur(nomJoueur As String)
-        Using SW_Joueurs As StreamWriter = File.AppendText(statsJoueurs)
-            If Not nomJoueur = vbNullString Then
-                SW_Joueurs.WriteLine("NOM:" + nomJoueur)
-                SW_Joueurs.WriteLine("---")
-            End If
-        End Using
-    End Sub
+        Dim listeNoms As List(Of String) = Joueur.RecupererNomsJoueurs()
 
-    Private Sub RecupererNoms(readLine As String)
-        If (readLine.Contains("NOM:")) Then
-            listeJoueurs.Add(readLine.Remove(0, 4))
+        If Not listeNoms.Contains(nomJoueur) Then
+            listeJoueurs.Add(New Joueur(nomJoueur))
         End If
+
+        For Each JoueurJ As Joueur In listeJoueurs
+            If JoueurJ.RecupererNom = nomJoueur Then
+                JoueurJouant = JoueurJ
+            End If
+        Next
     End Sub
 
+    Public Sub SauvegarderJoueurs()
+        Joueur.StockerJoueurs(statsJoueurs)
+    End Sub
 
-
-    Public NomJoueur As String
+    Public Sub RechargerJoueurs()
+        Joueur.RechargerJoueurs(statsJoueurs)
+    End Sub
 End Module

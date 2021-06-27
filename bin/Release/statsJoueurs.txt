@@ -12,7 +12,7 @@ NombreMaxCarré: 3
 ---
 NOM:Danny
 TempsJeuTotal: 264
-NombrePartiesJouee: 2
+NombrePartiesJouee: 1
 TempsMinPrCarré: 54
 NombreMaxCarré: 1
 ---
